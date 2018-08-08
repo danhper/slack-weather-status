@@ -1,0 +1,1 @@
+0 * * * *   cd /home/slack-weather-status/slack-weather-status && /usr/local/bin/pipenv run python slack_weather_status/profile_status.py >> logs/cron.log 2>&1

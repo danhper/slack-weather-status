@@ -9,9 +9,11 @@ requests = "*"
 redis = "*"
 cachetools = "*"
 gunicorn = "*"
+gevent = "*"
 
 [dev-packages]
 python-dotenv = "*"
+"fabric3" = "*"
 
 [requires]
 python_version = "3.6"
