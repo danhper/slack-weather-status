@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if status is defined %}
+  {% if status == "registered" %}
+  <div class="alert alert-success" role="alert">
+    <strong>Registration done!</strong> Your Slack status will be updated every hour.
+  </div>
+  {% else %}
+  <div class="alert alert-info" role="alert">
+    <strong>Registration canceled!</strong> Your Slack status will not be updated anymore.
+  </div>
+  {% endif %}
+{% endif %}
+
+<div class="jumbotron">
+  <h1 class="display-4">Register</h1>
+  <p class="lead">
+    By registering here, your Slack status will be updated every hour according to the current weather
+    <br>
+    You can cancel any time by pressing the Unregister button
+  </p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/register" role="button">Register</a>
+    <a class="btn btn-danger btn-lg" href="/unregister">Unregister</a>
+  </p>
+</div>
+
+{% endblock %}
