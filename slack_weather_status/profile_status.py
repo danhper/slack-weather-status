@@ -11,7 +11,7 @@ from slack_weather_status import settings
 
 
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather"
-TOKYO_FEED_URL = "https://www.data.jma.go.jp/developer/xml/feed/regular.xml"
+TOKYO_FEED_URL = "https://www.data.jma.go.jp/developer/xml/feed/regular_l.xml"
 
 
 def get_openweathermap_weather(city):
