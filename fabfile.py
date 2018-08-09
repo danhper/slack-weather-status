@@ -16,7 +16,8 @@ def deploy():
     project.rsync_project(
         local_dir="./",
         remote_dir=settings.APP_NAME,
-        exclude=[".git", ".env", ".vscode", "__pycache__", "tmp", "logs", "build"],
+        exclude=[".git", ".env", ".vscode", "__pycache__", "tmp", "logs", "build",
+                 "slack_weather_status.egg-info", "dist"],
         delete=True
     )
     with cd(REMOTE_DIR):
