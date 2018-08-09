@@ -10,6 +10,7 @@ redis = "*"
 cachetools = "*"
 gunicorn = "*"
 gevent = "*"
+"bs4" = "*"
 
 [dev-packages]
 python-dotenv = "*"
