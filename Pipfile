@@ -11,6 +11,7 @@ cachetools = "*"
 gunicorn = "*"
 gevent = "*"
 "bs4" = "*"
+lxml = "*"
 
 [dev-packages]
 python-dotenv = "*"
