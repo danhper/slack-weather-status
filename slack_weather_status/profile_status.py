@@ -25,7 +25,7 @@ def get_openweathermap_weather(city):
 def get_tokyo_weather():
     res = requests.get(TOKYO_FEED_URL)
     soup = BeautifulSoup(res.content.decode("utf8"), "lxml")
-    selector = dict(text=re.compile(".*?東京都.*?"))
+    selector = dict(text=re.compile(".*?東京都.*?天気予報.*?"))
     tokyo_url = soup.find("content", **selector).find_parent("entry").find("link")["href"]
     feed_soup = BeautifulSoup(requests.get(tokyo_url).content.decode("utf-8"), "lxml")
     weather = feed_soup.find("jmx_eb:weather", type="天気").text
