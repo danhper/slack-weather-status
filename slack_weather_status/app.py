@@ -15,9 +15,13 @@ db = redis.from_url(settings.REDIS_URL)
 app = Flask(settings.APP_NAME)
 
 
+def get_ip():
+    return request.headers.get("X-Forwarded-For", request.remote_addr)
+
+
 def get_city(address=None):
     if address is None:
-        address = request.remote_addr
+        address = get_ip()
     url = "http://api.ipstack.com/{0}".format(address)
     res = requests.get(url, params=dict(access_key=settings.IPSTACK_API_KEY))
     if res.status_code != 200:
@@ -74,7 +78,7 @@ def oauth_callback():
         if city:
             data["city"] = city
         db.hmset(user_key, data)
-        logging.info("registered user %s with ip %s: %s", user_key, request.remote_addr, data)
+        logging.info("registered user %s with ip %s: %s", user_key, get_ip(), data)
         status = "registered"
     else:
         status = "unregistered"
