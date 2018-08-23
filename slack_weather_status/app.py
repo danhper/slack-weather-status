@@ -74,7 +74,7 @@ def oauth_callback():
         if city:
             data["city"] = city
         db.hmset(user_key, data)
-        logging.info("registered user %s: %s", user_key, data)
+        logging.info("registered user %s with ip %s: %s", user_key, request.remote_addr, data)
         status = "registered"
     else:
         status = "unregistered"
