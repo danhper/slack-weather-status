@@ -16,6 +16,8 @@ lxml = "*"
 [dev-packages]
 python-dotenv = "*"
 "fabric3" = "*"
+ipython = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.6"

@@ -1,3 +1,4 @@
+import logging
 from os import path
 from urllib.parse import urlencode
 
@@ -34,6 +35,11 @@ def get_redirect_url(action):
     return "https://slack.com/oauth/authorize?" + urlencode(params)
 
 
+@app.before_first_request
+def setup_logging():
+    logging.basicConfig(level=logging.INFO, format=settings.LOG_FORMAT)
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -68,8 +74,10 @@ def oauth_callback():
         if city:
             data["city"] = city
         db.hmset(user_key, data)
+        logging.info("registered user %s: %s", user_key, data)
         status = "registered"
     else:
         status = "unregistered"
         db.delete(user_key)
+        logging.info("unregistered user %s", user_key)
     return render_template("index.html", status=status)
